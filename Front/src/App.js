@@ -10,10 +10,7 @@ export default function App() {
   useEffect(() => {
     storeService
       .getItems()
-      .then((data) => {
-        console.log(data);
-        setItems(data);
-      })
+      .then((data) => setItems(data))
       .catch((err) => console.error(err));
   }, []);
 
@@ -28,7 +25,10 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Store addItemToCart={addItemToCart} />} />
+        <Route
+          path="/"
+          element={<Store addItemToCart={addItemToCart} items={items} />}
+        />
         <Route path="/cart" element={<div>shopping card</div>} />
       </Routes>
     </Router>

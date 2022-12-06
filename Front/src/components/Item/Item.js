@@ -1,19 +1,34 @@
-import "./Item.css";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { AddShoppingCart } from "@mui/icons-material";
 
-export const Item = ({ expense, addItemToCart }) => {
-  const { title, amount, image } = expense;
-  const expenseLogo = require(`../../../public/logos/${image}.png`);
+export const Item = ({ item, addItemToCart }) => {
+  const { name, price, imageURL, description } = item;
 
   return (
-    <div className="expense-item" onClick={() => addItemToCart(expense)}>
-      <div className="expense-item__description">
-        <h2> {title}</h2>
-        <h1> {amount}$</h1>
-      </div>
-      <div className="expense-item__image-container ">
-        <img className="expense-item__image" src={expenseLogo}></img>
-      </div>
-    </div>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardHeader title={name} />
+      <CardMedia component="img" height="150" image={imageURL} />
+      <CardContent>
+        <Typography variant="h6" color="text.secondary">
+          {price}$
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          {description}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton onClick={() => addItemToCart(item)}>
+          <AddShoppingCart />
+        </IconButton>
+      </CardActions>
+    </Card>
   );
 };
-
