@@ -1,6 +1,6 @@
-import "./Product.css";
+import "./Item.css";
 
-export const Product = ({ expense, addItemToCart }) => {
+export const Item = ({ expense, addItemToCart }) => {
   const { title, amount, image } = expense;
   const expenseLogo = require(`../../../public/logos/${image}.png`);
 

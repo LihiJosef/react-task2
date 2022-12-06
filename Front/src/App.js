@@ -1,9 +1,21 @@
-import { useEffect, useState } from "react";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { Store } from "./pages";
+import { useEffect, useState } from "react";
+import storeService from "./services/storeService";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
 export default function App() {
+  const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    storeService
+      .getItems()
+      .then((data) => {
+        console.log(data);
+        setItems(data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   const addItemToCart = (item) => {
     setCartItems((prev) => [...prev, item]);
@@ -15,12 +27,10 @@ export default function App() {
 
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Store addItemToCart={addItemToCart} />} />
-          <Route path="/cart" element={<div>shopping card</div>} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Store addItemToCart={addItemToCart} />} />
+        <Route path="/cart" element={<div>shopping card</div>} />
+      </Routes>
     </Router>
   );
 }

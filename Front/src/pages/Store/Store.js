@@ -1,4 +1,4 @@
-import { Product } from "../../components";
+import { Item } from "../../components";
 import { expenses } from "../../data/carsData";
 
 export const Store = ({ addItemToCart }) => {
@@ -6,7 +6,7 @@ export const Store = ({ addItemToCart }) => {
     <div>
       <h2> Those are my cars: </h2>
       {expenses.map((expense) => (
-        <Product
+        <Item
           key={expense.id}
           expense={expense}
           addItemToCart={addItemToCart}

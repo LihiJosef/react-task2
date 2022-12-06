@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const bodyParser= require('body-parser');
+const cors = require("cors");
 
 // Models
 const Product = require('./models/product');
@@ -11,6 +12,8 @@ require('dotenv').config();
 const port = process.env.PORT;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cors());
 
 // Connect to DB
 const mongoConnection = `mongodb+srv://${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@cluster0.zkgxhus.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
