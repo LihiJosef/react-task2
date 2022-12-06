@@ -29,7 +29,7 @@ export const Store = ({ addItemToCart, items }) => {
         justify="center"
       >
         {items.map((item) => (
-          <Grid key={item._id} item xs={12} sm={6} md={4}>
+          <Grid key={item._id} item xs={12} sm={6} md={3}>
             <Item item={item} addItemToCart={addItemToCart} />
           </Grid>
         ))}
