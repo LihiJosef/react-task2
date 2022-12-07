@@ -1,27 +1,14 @@
-import { Item } from "../../components";
-import { Link } from "react-router-dom";
+import { Item, NavigationBar} from "../../components";
 import { useStyles } from "./Store.style";
-import { ShoppingCart } from "@mui/icons-material";
-import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
+
 
 export const Store = ({ addItemToCart, items }) => {
   const classes = useStyles();
 
   return (
     <>
-      <AppBar position="sticky">
-        <Toolbar>
-          <Typography variant="h5" sx={{ flexGrow: 1 }}>
-            Store
-          </Typography>
-          <Link to={"cart"}>
-            <IconButton>
-              <ShoppingCart />
-            </IconButton>
-          </Link>
-        </Toolbar>
-      </AppBar>
-
+      <NavigationBar/>
       <Grid
         container
         spacing={4}

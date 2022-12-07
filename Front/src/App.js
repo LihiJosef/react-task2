@@ -1,6 +1,7 @@
-import { Store } from "./pages";
+import { Store, Cart } from "./pages";
 import { useEffect, useState } from "react";
 import storeService from "./services/storeService";
+import cartService from "./services/cartService";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
 export default function App() {
@@ -18,6 +19,12 @@ export default function App() {
     setCartItems((prev) => [...prev, item]);
   };
 
+  const addOrderToDb = (order) => {
+    cartService.addOrder(order);
+    alert("The order has been successfully added to DB");
+    setCartItems([]);
+  };
+
   useEffect(() => {
     console.log(cartItems);
   }, [cartItems]);
@@ -29,7 +36,10 @@ export default function App() {
           path="/"
           element={<Store addItemToCart={addItemToCart} items={items} />}
         />
-        <Route path="/cart" element={<div>shopping card</div>} />
+        <Route
+          path="/cart"
+          element={<Cart cartItems={cartItems} addOrderToDb={addOrderToDb} />}
+        />
       </Routes>
     </Router>
   );
