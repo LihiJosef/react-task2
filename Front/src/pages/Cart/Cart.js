@@ -1,4 +1,4 @@
-import { NavigationBar, CartItem } from "../../components";
+import { CartItem } from "../../components";
 import { Paper, Typography, Grid, Button } from "@mui/material";
 
 export const Cart = ({ cartItems, addOrderToDb }) => {
@@ -17,42 +17,39 @@ export const Cart = ({ cartItems, addOrderToDb }) => {
   };
 
   return (
-    <>
-      <NavigationBar />
-      <Paper
-        sx={{
-          p: 2,
-          margin: "auto",
-          maxWidth: 1200,
-          flexGrow: 1,
-        }}
-      >
-        {cartItems.map((cartItem, index) => (
-          <CartItem key={index} cartItem={cartItem} />
-        ))}
-        {totalPrice > 0 ? (
-          <Grid container spacing={2} sx={{ my: 2 }}>
-            <Grid item xs={11}>
-              <Typography variant="subtitle1" component="div">
-                TotalAmount: {totalPrice}$
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <Button
-                variant="contained"
-                size="medium"
-                onClick={onClickBuyHandler}
-              >
-                Buy
-              </Button>
-            </Grid>
+    <Paper
+      sx={{
+        p: 2,
+        margin: "auto",
+        maxWidth: 1200,
+        flexGrow: 1,
+      }}
+    >
+      {cartItems.map((cartItem, index) => (
+        <CartItem key={index} cartItem={cartItem} />
+      ))}
+      {totalPrice > 0 ? (
+        <Grid container spacing={2} sx={{ my: 2 }}>
+          <Grid item xs={11}>
+            <Typography variant="subtitle1" component="div">
+              TotalAmount: {totalPrice}$
+            </Typography>
           </Grid>
-        ) : (
-          <Typography variant="subtitle1" component="div">
-            Your cart is empty
-          </Typography>
-        )}
-      </Paper>
-    </>
+          <Grid item xs={1}>
+            <Button
+              variant="contained"
+              size="medium"
+              onClick={onClickBuyHandler}
+            >
+              Buy
+            </Button>
+          </Grid>
+        </Grid>
+      ) : (
+        <Typography variant="subtitle1" component="div">
+          Your cart is empty
+        </Typography>
+      )}
+    </Paper>
   );
 };

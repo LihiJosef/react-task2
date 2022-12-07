@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import storeService from "./services/storeService";
 import cartService from "./services/cartService";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { NavigationBar } from "./components";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -31,6 +32,7 @@ export default function App() {
 
   return (
     <Router>
+      <NavigationBar />
       <Routes>
         <Route
           path="/"
