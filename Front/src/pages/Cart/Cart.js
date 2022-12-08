@@ -1,7 +1,8 @@
 import { CartItem } from "../../components";
+import storeService from "../../services/storeService";
 import { Paper, Typography, Grid, Button } from "@mui/material";
 
-export const Cart = ({ cartItems, addOrderToDb }) => {
+export const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems
     .reduce(
       (accumulator, currentValue) =>
@@ -11,9 +12,22 @@ export const Cart = ({ cartItems, addOrderToDb }) => {
     .toFixed(3);
 
   const onClickBuyHandler = () => {
-    // Order is array of id's cart items
+    // Order is an array of cart items id's
     const order = cartItems.map((cartItem) => cartItem._id);
     addOrderToDb(order);
+  };
+
+  const addOrderToDb = (order) => {
+    storeService
+      .addOrder(order)
+      .then(() => {
+        alert("The order has been successfully added to DB");
+        setCartItems([]);
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("The order failed");
+      });
   };
 
   return (

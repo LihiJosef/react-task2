@@ -1,7 +1,8 @@
 import { Grid, Typography, CardMedia, Divider } from "@mui/material";
 
-export const CartItem = ({ cartItem }) => {
-  const { name, price, imageURL, description, _id } = cartItem;
+export const CartItem = ({
+  cartItem: { name, price, imageURL, description, _id },
+}) => {
   return (
     <>
       <Grid container spacing={2}>

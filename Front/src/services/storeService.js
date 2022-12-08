@@ -10,4 +10,15 @@ export default {
         .catch((err) => reject(err));
     });
   },
+
+  addOrder: (order) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${REACT_APP_SERVICE}/order`, {
+          products: order,
+        })
+        .then(({ data }) => resolve(data))
+        .catch((err) => reject(err));
+    });
+  },
 };

@@ -1,22 +1,15 @@
-import { Item } from "../../components";
-import { useStyles } from "./Store.style";
+import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
+import { Item } from "../../components";
 
 export const Store = ({ addItemToCart, items }) => {
-  const classes = useStyles();
-
   return (
-    <Grid
-      container
-      spacing={4}
-      className={classes.gridContainer}
-      justify="center"
-    >
-      {items.map((item) => (
-        <Grid key={item._id} item xs={12} sm={6} md={3}>
-          <Item item={item} addItemToCart={addItemToCart} />
-        </Grid>
-      ))}
-    </Grid>
+      <Grid container spacing={4} justify="center">
+        {items.map((item) => (
+          <Grid key={item._id} item xs={12} sm={6} md={3}>
+            <Item item={item} addItemToCart={addItemToCart} />
+          </Grid>
+        ))}
+      </Grid>
   );
 };
