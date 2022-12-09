@@ -5,6 +5,14 @@ const orderScheme = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: "product",
         require: true
+    },
+    name: {
+        type: String,
+        require: true
+    },
+    phone: {
+        type: String,
+        require: true
     }
 });
 
