@@ -14,9 +14,7 @@ export default {
   addOrder: (order) => {
     return new Promise((resolve, reject) => {
       axios
-        .post(`${REACT_APP_SERVICE}/order`, {
-          products: order,
-        })
+        .post(`${REACT_APP_SERVICE}/order`, order)
         .then(({ data }) => resolve(data))
         .catch((err) => reject(err));
     });

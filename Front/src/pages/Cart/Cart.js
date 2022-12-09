@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import storeService from "../../services/storeService";
 import { CartItem, UserDetailsPopup } from "../../components";
 import { Paper, Typography, Grid, Button } from "@mui/material";
@@ -6,10 +6,6 @@ import { Paper, Typography, Grid, Button } from "@mui/material";
 export const Cart = ({ cartItems, setCartItems }) => {
   const [openPopup, setOpenPopup] = useState(false);
   const [userDetails, setUserDetails] = useState({});
-
-  useEffect(() => {
-    console.log(userDetails);
-  }, [userDetails]);
 
   const totalPrice = cartItems
     .reduce(
@@ -33,7 +29,7 @@ export const Cart = ({ cartItems, setCartItems }) => {
         console.error(err);
         alert("The order failed");
       })
-      .finish(() => handleClosePopup());
+      .finally(handleClosePopup);
   };
 
   const handleClosePopup = () => {
