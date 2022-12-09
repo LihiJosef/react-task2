@@ -43,8 +43,6 @@ app.post("/product", (req, res) => {
   res.send("Created");
 });
 
-// 638faa4322e1852cc2db2124 638faa9f22e1852cc2db2127 638fab1222e1852cc2db212a
-
 app.post("/order", (req, res) => {
   Order.create({ products: req.body.products, name: req.body.name, phone: req.body.phone });
   res.send("Created");
